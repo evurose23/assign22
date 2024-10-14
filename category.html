@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Cosmetic Categories</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Container for Cosmetic Categories with Images -->
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Categories of Car Cosmetic Items</h1>
+    <div class="row" id="category-list">
+      <!-- Categories with images will be dynamically inserted here -->
+    </div>
+  </div>
+   
+  
+
+  <!-- JavaScript Libraries for Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript to dynamically add categories with images -->
+  <script>
+    // Car Cosmetic Categories Data
+    const categories = [
+      { name: "BMW", link: "#car-wax", image: "https://imgd-ct.aeplcdn.com/664x415/n/cw/ec/149075/z4-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80" },
+      { name: "Mercedes", link: "#car-shampoo", image: "https://w7.pngwing.com/pngs/452/978/png-transparent-mercedes-benz-g-class-car-mercedes-car-compact-car-sedan-vehicle.png" },
+      { name: "Mahindra", link: "#tire-cleaner", image: "https://p7.hiclipart.com/preview/188/738/568/mahindra-mahindra-car-mahindra-xuv500-mahindra-scorpio-car.jpg" },
+      { name: "Suzuki", link: "#interior-cleaner", image: "https://i.pinimg.com/736x/ba/22/a3/ba22a31238023d22f27c8c63400fbc42.jpg" },
+      { name: "toyota", link: "#glass-cleaner", image: "https://toyotatuson3s.vn/wp-content/uploads/2022/02/toyota_0041_land-cruiser-color.png" },
+      { name: "Tata", link: "#polish", image: "https://i.pinimg.com/originals/92/34/95/923495b621f809d1bfe42a1923a1f89e.png" }
+    ];
+
+    // Insert Categories into the Page
+    const categoryList = document.getElementById('category-list');
+
+    categories.forEach(category => {
+      // Create a column div
+      const colDiv = document.createElement('div');
+      colDiv.classList.add('col-md-4', 'mb-4');
+
+      // Create a card
+      const cardDiv = document.createElement('div');
+      cardDiv.classList.add('card', 'shadow-sm');
+
+      // Add the image to the card
+      const img = document.createElement('img');
+      img.src = category.image;
+      img.classList.add('card-img-top');
+      img.alt = category.name;
+
+      // Create the card body
+      const cardBody = document.createElement('div');
+      cardBody.classList.add('card-body', 'text-center');
+
+      // Add the category link button
+      const categoryLink = document.createElement('a');
+      categoryLink.href = category.link;
+      categoryLink.classList.add('btn', 'btn-primary', 'btn-block');
+      categoryLink.innerText = category.name;
+
+      // Append the image and link to the card body
+      cardBody.appendChild(categoryLink);
+      cardDiv.appendChild(img);
+      cardDiv.appendChild(cardBody);
+      colDiv.appendChild(cardDiv);
+      categoryList.appendChild(colDiv);
+    });
+  </script>
+</body>
+</html>
